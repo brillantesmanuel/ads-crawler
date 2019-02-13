@@ -17,37 +17,37 @@
 </head>
 <body>
 
-    <button id="check">Check Site</button>
+<button id="check">Check Site</button>
 
-    <div id="content"></div>
+<div id="content"></div>
 
-    <script type="text/javascript" src="./jquery.js"></script>
-    <script type="text/javascript">
-    (function($) {
-        $('#check').on('click', function(event) {
-            
-            var content = $('#content');
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript">
+(function($) {
+    $('#check').on('click', function(event) {
+        
+        var content = $('#content');
 
-            content.empty();
+        content.empty();
 
 
-            var response = $.getJSON('data.json', function(response) {
-                $.each(response.data, function(i, value) {
-                    $.ajax({
-                        url: value + 'ads.txt',
-                        async: false,
-                        success: function( data ) {
-                            content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
-                        },
-                        error: function(data) {
-                            content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>');
-                        }
-                    });
+        var response = $.getJSON('data.json', function(response) {
+            $.each(response.data, function(i, value) {
+                $.ajax({
+                    url: value + 'ads.txt',
+                    async: false,
+                    success: function( data ) {
+                        content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
+                    },
+                    error: function(data) {
+                        content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>');
+                    }
                 });
             });
-
         });
-    })(jQuery)
-    </script>
+
+    });
+})(jQuery)
+</script>
 </body>
 </html>
