@@ -33,17 +33,14 @@
 
             var response = $.getJSON('data.json', function(response) {
                 $.each(response.data, function(i, value) {
-                    console.log(value);
                     $.ajax({
                         url: value + 'ads.txt',
                         async: false,
                         success: function( data ) {
-                            content.append('<p class="success">Success: ' + value + ' &#10004;</p>')
+                            content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
                         },
                         error: function(data) {
-                            content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>')
-
-                            return;
+                            content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>');
                         }
                     });
                 });
