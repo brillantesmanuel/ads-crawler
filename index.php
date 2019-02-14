@@ -30,7 +30,6 @@
 
         content.empty();
 
-
         var response = $.getJSON('data.json', function(response) {
             $.each(response.data, function(i, value) {
                 $.ajax({
