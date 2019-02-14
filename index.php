@@ -35,12 +35,17 @@
             $.each(response.data, function(i, value) {
                 $.ajax({
                     url: value + 'ads.txt',
-                    async: false,
+                    async: true,
+                    crossDomain: true,
+                    dataType: 'jsonp',
                     success: function( data ) {
                         content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
                     },
                     error: function(data) {
-                        content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>');
+                        if ( data.status == 200 )
+                            content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
+                        else
+                            content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>');
                     }
                 });
             });
