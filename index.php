@@ -38,14 +38,13 @@
                     async: true,
                     crossDomain: true,
                     dataType: 'jsonp',
-                    success: function( data ) {
-                        content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
-                    },
-                    error: function(data) {
-                        if ( data.status == 200 )
+                    statusCode: {
+                        200: function() {
                             content.append('<p class="success">Success: ' + value + ' &#10004;</p>');
-                        else
+                        },
+                        404: function() {
                             content.append('<p class="fail">Failed: ' + value + ' &#10007;</p>');
+                        }
                     }
                 });
             });
